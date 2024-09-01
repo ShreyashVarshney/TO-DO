@@ -1,0 +1,236 @@
+/* .home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create_form input{
+  width: 300px;
+  padding: 10px;
+  border-bottom: 2px solid;
+  outline: none;
+}
+
+.create_form button{
+  padding: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.task{
+  display: flex;
+  align-items: center;
+  width: 344px;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  height: 35px;
+  padding:  2px 5px 2px 5px;
+  margin-top: 2px;
+}
+
+.checkbox{
+  display: flex;
+  align-items: center;
+}
+
+.checkbox .icon{
+  margin-right: 5px;
+  font-size: 15px;
+}
+
+.task div span{
+  margin: 0px 5px 0px 4px;
+}
+
+.task div .icon{
+  cursor: pointer;
+}
+
+.line_through{
+  text-decoration: line-through;
+} */
+
+
+// import { useState } from 'react'
+// import './App.css'
+// import Home from './Home'
+
+// function App() {
+
+//   return (
+//     <div>
+//      <Home/>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// import React,{useState} from 'react'
+// import axios from 'axios'
+
+// function Create() {
+//     const [task, setTask] = useState()
+//     const handleAdd = ()=>{
+//        axios.post('http://localhost:3001/add', {task: task})
+//        .then(result=> {
+//          location.reload()
+//        })
+//        .catch(err => console.log(err))
+//     }
+//   return (
+//     <div className='create_form'>
+//       <input type="text"  placeholder='Enter Task' onChange={(e)=> setTask(e.target.value)}/>
+//       <button type="button" onClick={handleAdd}>Add</button>
+//     </div>
+//   )
+// }
+
+// export default Create
+
+
+
+
+
+// import React, { useEffect, useState } from 'react'
+// import Create from './Create'
+// import axios from 'axios'
+// import { BsCircleFill, BsFillCheckCircleFill, BsFillTrashFill } from 'react-icons/bs';
+
+// function Home() {
+//     const [todos, setTodos] = useState([])
+//     useEffect(()=>{
+//       axios.get('http://localhost:3001/get')
+//       .then(result => setTodos(result.data))
+//       .catch(err => console.log(err)) 
+//     },[])
+
+
+
+//     const handleEdit = (id) =>{
+//       axios.put('http://localhost:3001/update/'+id)
+//       .then(result => {
+//         location.reload()
+//       })
+//       .catch(err => console.log(err)) 
+//     }
+
+
+//  const handleDelete = (id) => {
+//   axios.delete('http://localhost:3001/delete/'+id)
+//   .then(result => {
+//     location.reload()
+//   })
+//   .catch(err => console.log(err)) 
+//  }
+
+//   return (
+//     <div className='home'>
+//       <h2>To-DO List</h2>
+//       <Create/>
+//       <br/>
+//       {
+//         todos.length === 0 
+//         ?
+//         <div><h2>No Record</h2></div>
+//         :
+//         todos.map(todo=>(
+//             <div className='task'>
+//             <div className='checkbox' onClick={() => handleEdit(todo._id)}>
+//             {todo.done ? 
+//             <BsFillCheckCircleFill className = 'icon'></BsFillCheckCircleFill>
+//             :<BsCircleFill className = 'icon'/>
+//             }
+            
+//                 <p className={todo.done ? "line_through" :"" }>{todo.task}</p>
+//             </div>
+//             <div>
+//             <span><BsFillTrashFill className='icon' 
+//             onClick={() => handleDelete(todo._id)}/></span>
+//             </div>
+//             </div>
+//         ))
+//       }
+//     </div>
+//   )
+// }
+
+// export default Home
+
+// import React, { useEffect, useState } from 'react';
+// import Create from './Create';
+// import axios from 'axios';
+// import { BsCircleFill, BsFillCheckCircleFill, BsFillTrashFill } from 'react-icons/bs'; 
+
+// function Home() {
+//     const [todos, setTodos] = useState([]);
+
+//     useEffect(() => {
+//         axios.get('http://localhost:3001/get')
+//             .then(result => setTodos(result.data))
+//             .catch(err => console.log(err));
+//     }, []);
+
+//     const handleToggle = (id, done) => {
+//         axios.put('http://localhost:3001/update/' + id, { done: !done })
+//             .then(() => {
+//                 setTodos(prevTodos =>
+//                     prevTodos.map(todo =>
+//                         todo._id === id ? { ...todo, done: !done } : todo
+//                     )
+//                 );
+//             })
+//             .catch(err => console.log(err));
+//     };
+
+//     const handleDelete = (id) => {
+//         axios.delete('http://localhost:3001/delete/' + id)
+//             .then(() => {
+//                 setTodos(prevTodos => prevTodos.filter(todo => todo._id !== id));
+//             })
+//             .catch(err => console.log(err));
+//     };
+
+//     return (
+//         <div className='home'>
+//             <h2>TO-DO LIST</h2>
+//             <Create />
+//             <br />
+//             {todos.length === 0 ? (
+//                 <div><h2>No Record</h2></div>
+//             ) : (
+//                 todos.map(todo => (
+//                     <div className='task' key={todo._id}>
+//                         <div className='checkbox' onClick={() => handleToggle(todo._id, todo.done)}>
+//                             {todo.done ? (
+//                                 <BsFillCheckCircleFill className='icon' />
+//                             ) : (
+//                                 <BsCircleFill className='icon' />
+//                             )}
+//                             <p className={todo.done ? "line_through" : ""}>{todo.task}</p>
+//                         </div>
+//                         <div>
+//                             <span>
+//                                 <BsFillTrashFill className='icon' onClick={() => handleDelete(todo._id)} />
+//                             </span>
+//                         </div>
+//                     </div>
+//                 ))
+//             )}
+//         </div>
+//     );
+// }
+
+// export default Home;
+
+
+
+
+
+
+
+
+

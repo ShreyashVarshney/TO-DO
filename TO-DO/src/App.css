@@ -1,0 +1,198 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0f7fa; 
+    box-sizing: border-box;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid #e76f51; 
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .create_form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+  
+  .create_form input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #b0bec5;
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .create_form input:focus {
+    border-color: #e76f51;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .create_form button {
+    padding: 12px 20px;
+    background-color: #e76f51;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-sizing: border-box;
+  }
+  
+  .create_form button:hover {
+    background-color: #d53f2f;
+    transform: scale(1.05);
+  }
+  
+  .task {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #e76f51;
+    color: white;
+    height: 60px;
+    padding: 12px 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .checkbox {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .checkbox .icon {
+    margin-right: 8px;
+    font-size: 24px;
+  }
+  
+  .task div {
+    margin-left: 10px;
+    overflow: hidden;
+  }
+  
+  .task div span {
+    font-size: 16px;
+  }
+  
+  .task div .icon {
+    cursor: pointer;
+  }
+  
+  .line_through {
+    text-decoration: line-through;
+    color: black;
+  }
+  
+  .progress-bar-container {
+    width: 100%;
+    background-color: #dbe2e6;
+    border-radius: 6px;
+    padding: 1px;
+    box-sizing: border-box;
+  }
+  
+  .progress-bar {
+    height: 12px; 
+    width: 0;
+    background-color: #e76f51;
+    text-align: center;
+    line-height: 12px;
+    color: white;
+    border-radius: 6px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  @media (max-width: 600px) {
+    .container {
+      padding: 15px;
+      border-width: 1px; 
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    .create_form {
+      flex-direction: column;
+    }
+  
+    .create_form input {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+  
+    .create_form button {
+      width: 93%;
+      font-size: 14px;
+    }
+  
+    .task {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px;
+      height: auto;
+    }
+  
+    .checkbox {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    .task div {
+      margin-left: 0;
+      margin-top: 5px;
+    }
+  
+    .task div span {
+      font-size: 14px;
+    }
+  
+    .checkbox .icon {
+      font-size: 22px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .create_form input {
+      font-size: 12px;
+    }
+  
+    .create_form button {
+      font-size: 12px;
+    }
+  
+    .task div span {
+      font-size: 12px;
+    }
+  
+    .checkbox .icon {
+      font-size: 20px;
+    }
+  }
+  
